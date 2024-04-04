@@ -1,3 +1,4 @@
+titulo.innerHTML = '06 - Seal';
 "use strict";
 // Similar a Freeze, existe otro object method llamado Seal
 // A diferencia de Freeze no se pueden agregar ni eliminar propiedades pero si se pueden modificar las existentes...

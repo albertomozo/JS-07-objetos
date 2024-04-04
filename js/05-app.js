@@ -1,4 +1,4 @@
-titulo.innerHTML='05 destructuring III';
+titulo.innerHTML='05 destructuring II';
 // Veamos como hacer destructuring de un objeto que esta dentro de otro objeto..
 
 const curso = {

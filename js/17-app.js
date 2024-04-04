@@ -1,6 +1,7 @@
+titulo.innerHTML = '17 - Freeze';
 "use strict";
 
-// Como vimos en el video anterior los objetos si se pueden modificar sus valores, veamos como prevenirlo en caso de que sea algo que desees hacer.
+//  los objetos si se pueden modificar sus valores, veamos como prevenirlo en caso de que sea algo que desees hacer.
 
 const curso = {
     nombre: "Front",

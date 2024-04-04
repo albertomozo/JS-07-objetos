@@ -20,11 +20,6 @@ console.log(curso.disponible);
 console.log(curso['nombre']);
 
 
-
-
-// Crear nuevo video...
-
-
 // Añadir propiedades nuevas a un objeto...
 // Para añadir nuevas propiedades se utiliza de la misma forma la sintaxis de punto
 curso.imagen = "image.jpg";
@@ -36,4 +31,3 @@ delete curso.nombre;
 
 console.log(curso);
 
-// Algunas veces deseas asignar el valor de un objeto hacia una variable, veamos como hacerlo en el siguiente video

@@ -1,4 +1,4 @@
-
+titulo.innerHTML = '20 - Spread ...';
 const curso = {
     nombre: "FRONT",
     horas: 210,

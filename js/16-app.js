@@ -1,3 +1,4 @@
+titulo.innerHTML = '16 - Objetos const';
 // Si recuerdas una variable con const una vez que es definida no puede reasginarse su valor.
 
 
@@ -23,4 +24,4 @@ console.log(curso);
 
 curso.disponible = false;
 
-console.log(curso); // Puedes ver que lo pudimos modificar, a pesar de ser const, veamos como prevenir esto en el próximo video
+console.log(curso); // Puedes ver que lo pudimos modificar, a pesar de ser const

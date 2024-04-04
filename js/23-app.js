@@ -1,4 +1,5 @@
-// En este video estaremos viendo Object.keys y object.values y entries, estos son más conocidos como iteradores de objetos, 
+titulo.innerHTML = '23 - Object.entries';
+// Object.keys y object.values y entries, estos son más conocidos como iteradores de objetos, 
 
 const curso = {
     nombre: "FRONT",

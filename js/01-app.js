@@ -7,7 +7,7 @@ const disponible = true;
 
 // Podemos crear un objeto que agrupe toda esta información en una sola variable 
 
-const curso = { // Esto se le conoce como object litera...
+const curso = { // Esto se le conoce como object ...
 
 }
 

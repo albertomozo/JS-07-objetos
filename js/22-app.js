@@ -1,4 +1,4 @@
-// En este video estaremos viendo la palabra this...
+titulo.innerHTML = '22 - This';
 // This se refiere al valor sobre el objeto o context que se esta ejecutando en ese momento
 
 

@@ -17,7 +17,7 @@ const curso = {
        
     }
 }
-
+console.log('curso');
 console.log(curso);
 
 // si ahora quisiera matricular a alumnos en este curso, debería incluirlos en esta estructura de alguna manera. Como van a ser elementos del mismo tipo, Se utilizan los array para incluir los alumnos en el curso de la siguiente forma
@@ -44,7 +44,7 @@ const alumno = {
     */
 
 }
-
+console.log('alumno');
 console.log(alumno);
 const cursoactual = 
 {"curso":"FRONTEND",
@@ -136,7 +136,7 @@ const cursoactual =
    }  
 ]
 }
-
+console.log('cursoactual');
 console.log(cursoactual);
     
    
