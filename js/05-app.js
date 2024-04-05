@@ -16,6 +16,6 @@ const { nombre, informacion, informacion: { tipo, horario } } = curso;
 
 
 console.log(nombre)
-console.log(informacion)
-console.log(tipo)
+console.log(informacion) // curso.informacion
+console.log(tipo) //curso.informacion.tipo
 console.log(horario)

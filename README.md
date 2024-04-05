@@ -30,3 +30,5 @@ Spread  ...
 this
 ## 23-app.js
 object.entries
+## 24-app.js 25-app.js 26-app.js
+metodo curso.matricular()

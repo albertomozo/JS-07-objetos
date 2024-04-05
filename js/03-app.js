@@ -24,9 +24,14 @@ const { nombre } = curso;
 // si deseas extraer más variables;
 const { horas } = curso;
 
+
+
 console.log(nombre)
 console.log(horas)
 
 // O puedes hacerlo mejor con 
 
 //const {nombre, horas} = curso;
+
+// const nombre = curso.nombre;
+// const horas = curso['horas'];

@@ -7,9 +7,9 @@ const disponible = true;
 
 // Podemos crear un objeto que agrupe toda esta información en una sola variable 
 
-const curso = { // Esto se le conoce como object ...
+/* const curso = { // Esto se le conoce como object ...
 
-}
+} */
 
 // Estas llaves despues del signo = representan un objeto
 
@@ -31,3 +31,4 @@ const curso = { // Esto se le conoce como object ...
 } */
 
 console.log(curso);
+
