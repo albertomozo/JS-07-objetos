@@ -5,6 +5,7 @@ const curso = {
     nombre: "FRONT",
     horas: 30,
     disponible: true,
+    horario : 55
    
 }
 

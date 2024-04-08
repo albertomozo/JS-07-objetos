@@ -107,7 +107,7 @@ for (let clave in cursoactual){
 
 /*  DATOS CURSO */
 
-datos = `<h1>${cursoactual.curso}</h1>`;
+datos = `<p>${cursoactual.curso}</p>`;
 datos += `<p>Inicio : ${cursoactual.fecha_inicio }</p>`;
 // añadir datos de tutor 
 

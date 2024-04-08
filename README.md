@@ -32,3 +32,12 @@ this
 object.entries
 ## 24-app.js 25-app.js 26-app.js
 metodo curso.matricular()
+## 27-app.js
+metodo curso.matricular()
+## 28-app.js
+interfaz con emoji
+## 29-app.js
+Poner y quitar botones matricular / desmatricular
+## 30-app.js
+Iconos font awesome 
+
