@@ -40,4 +40,9 @@ interfaz con emoji
 Poner y quitar botones matricular / desmatricular
 ## 30-app.js
 Iconos font awesome 
+## 31-app.js
+CSS para barraMatriculas y segunda refactorizacion.
+## 32-app-js
+En proyecto, habria que pasar el metodo mostrarMostriculas al front y quitarlo del objeto. 🚧
+
 

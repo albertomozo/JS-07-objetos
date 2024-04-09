@@ -91,6 +91,37 @@ p {
     text-align: left;
 
 }
+/* clase para manipular la barra Matriculas */
+.barraMatriculas {
+    background-color: rgb(230, 246, 244);
+    border : 2px solid blue;
+    td { 
+        border : 2px solid red; 
+    }
+
+    &:hover{
+        background-color: blueviolet;
+    }
+    td:hover{
+        background-color: black;
+    }
+    td i:hover{
+        background-color: yellow;
+    }
+
+    td img:hover{
+        background-color: green;
+    ;
+    }
+}
+
+/* .barraMatriculas td { 
+    border : 2px solid red; 
+} */
+
+/* .barraMatriculas:hover{
+
+} */
 
 
 
