@@ -42,7 +42,10 @@ Poner y quitar botones matricular / desmatricular
 Iconos font awesome 
 ## 31-app.js
 CSS para barraMatriculas y segunda refactorizacion.
+## 31-app-console.js
+Añadimos controles para ver en consola el funcionamiento de los metodos.
 ## 32-app-js
-En proyecto, habria que pasar el metodo mostrarMostriculas al front y quitarlo del objeto. 🚧
+barra de progreso 
+
 
 
