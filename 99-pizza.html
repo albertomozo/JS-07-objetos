@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pedido de Pizza</title>
+  <style>
+    body { font-family: Arial; }
+    .factura { margin-top: 20px; border:1px solid #444; padding:12px;}
+  </style>
+</head>
+<body>
+  <h2>Pide tu Pizza</h2>
+  <form id="formPizza">
+    <div>
+      <b>Tamaño:</b><br>
+      <input type="radio" name="tamano" value="pequena" checked> Pequeña<br>
+      <input type="radio" name="tamano" value="mediana"> Mediana<br>
+      <input type="radio" name="tamano" value="grande"> Grande<br>
+    </div>
+    <div>
+      <b>Ingredientes:</b><br>
+      <input type="checkbox" name="ingrediente" value="queso"> Queso<br>
+      <input type="checkbox" name="ingrediente" value="jamon"> Jamón<br>
+      <input type="checkbox" name="ingrediente" value="champiñones"> Champiñones<br>
+      <input type="checkbox" name="ingrediente" value="aceitunas"> Aceitunas<br>
+      <input type="checkbox" name="ingrediente" value="cebolla"> Cebolla<br>
+      <input type="checkbox" name="ingrediente" value="bacon"> Bacon<br>
+    </div>
+    <input type="button" value="Calcular" onclick="calcularFactura()">
+  </form>
+  <div id="factura" class="factura"></div>
+<script>
+const precios = {
+    tamanos: { pequena: 5, mediana: 8, grande: 12 },
+    ingredientes: {
+        queso: 1,
+        jamon: 1.5,
+        champiñones: 1.2,
+        aceitunas: 0.8,
+        cebolla: 0.7,
+        bacon: 1.7
+    }
+};
+
+function calcularFactura() {
+    const frm=document.getElementById('formPizza');
+    const  tamanos=frm.tamano;
+    let tamanoSeleccionado='';
+    for(var i=0;i<tamanos.length;i++){
+        if(tamanos[i].checked){ tamanoSeleccionado=tamanos[i].value; }
+    }
+
+    const  precioTamano=precios.tamanos[tamanoSeleccionado];
+    let total=precioTamano;
+    let ingredientesSel=[];
+    let ingredientes=frm.ingrediente;
+    // ingredientes puede ser undefined si solo hay uno
+    if(ingredientes.length===undefined){
+        if(ingredientes.checked){
+            ingredientesSel.push(ingredientes.value);
+            total+=precios.ingredientes[ingredientes.value];
+        }
+    }else{
+        for(let i=0;i<ingredientes.length;i++){
+            if(ingredientes[i].checked){
+                ingredientesSel.push(ingredientes[i].value);
+                total+=precios.ingredientes[ingredientes[i].value];
+            }
+        }
+    }
+
+    var texto="<b>Factura:</b><br>Tamaño: "+tamanoSeleccionado+" ("+precioTamano+"€)<br>";
+    texto+="Ingredientes seleccionados:<ul>";
+    for(let i=0;i<ingredientesSel.length;i++){
+        texto+="<li>"+ingredientesSel[i]+" ("+precios.ingredientes[ingredientesSel[i]]+"€)</li>";
+    }
+    texto+="</ul>";
+    texto+="<b>Total: "+total.toFixed(2)+" €</b>";
+    document.getElementById('factura').innerHTML=texto;
+}
+// Si quieres que la factura se actualice cada vez que se selecciona/des-selecciona algo, puedes añadir en cada input: onchange="calcularFactura()" en vez del botón.
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curso IFCD0110</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #ccc;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #f4e04d;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    ul.bloqueCurso {
+      list-style: none;
+      background: #2b2b2b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #444;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    ul.bloqueCurso:hover {
+      transform: scale(1.02);
+    }
+
+    .alumno-card {
+      background-color: #333;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 4px solid #f4e04d;
+      border-radius: 8px;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .alumno-card:hover {
+      background-color: #444;
+      transform: translateX(5px);
+    }
+
+    .detalle {
+      display: none;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #login {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    #login input {
+      padding: 10px;
+      font-size: 1.2em;
+      margin-top: 10px;
+      background-color: #222;
+      border: 1px solid #444;
+      color: #fff;
+    }
+
+    #login button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #f4e04d;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+
+    #login button:hover {
+      background-color: #d6c632;
+    }
+
+    a {
+      color: #f4e04d;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+    background-color: #2b2b2b;
+    border: 1px solid #555;
+    border-radius: 5px;
+    overflow: hidden;
+    }
+
+    th, td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: center;
+    }
+
+    th {
+    background-color: #444;
+    color: #f4e04d;
+    }
+
+    tr:hover {
+    background-color: #3a3a3a;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Pantalla de acceso -->
+  <div id="login">
+    <h2>🔐 Ingresa la contraseña para acceder</h2>
+    <input type="password" id="password" maxlength="4" placeholder="Escribe la contraseña">
+    <button onclick="verificarAcceso()">Acceder</button>
+  </div>
+
+  <!-- Contenido del curso -->
+  <h1 id="titulo"></h1>
+  <div id="curso"></div>
+  <div id="tutor"></div>
+  <div id="alumnos"></div>
+
+  <!-- Script -->
+  <script>
+        const cursoJSON = {"curso":"IFCD0110_202505",
+            "fecha inicio" : "2025-05-15",
+            "fecha fin" : "2025-09-26",
+            "lugar" : "Donosti",
+            "empresa" : "CEBANC",
+            "url_drive" : "https://docs.google.com/presentation/d/1APMiTbTaZDGt2DyPXf5gcJxv--SWPONJ0nOrvrpPv4o/edit?usp=drive_link",
+            "tutor":
+                {"Nombre":"Alberto Mozo",
+                    "email" : "albertomozodocente@gmail.com",
+                    "linked" : "https://www.linkedin.com/in/alberto-mozo-avellaned-80615713/",
+                    "github" : "albertomozo"
+                
+                
+                },
+            "alumnos" : [
+                {
+                    "Nombre":"Monica",
+                    "email" : "moniqueaghedo2001@gmail.com",
+                    "linked" : "https://www.linkedin.com/",
+                    "github" : "moniqueaghedo",
+                    "url" : "https://curriculumvitae01.netlify.app/",
+                    "inicio" : {
+                        "html" : 1,
+                        "css" : 1,
+                        "JS" : 1
+                    },
+                    "fin" : {
+                        "html" :0 ,
+                        "css" : 0,
+                        "JS" :0 
+                    }
+                },
+                {
+                    "Nombre":"Liz Cebrecos",
+                    "email" : "liz.k.cebrecos@gmail.com",
+                    "linked" : "http://Linkedin.com/in/lizcebrecos",
+                    "github" : "Liz-katherine",
+                    "url" : "https://cvindex.netlify.app/",
+                    "inicio" : {
+                        "html" : 0,
+                        "css" : 0,
+                        "JS" : 0
+                    },
+                    "fin" : {
+                        "html" : 2,
+                        "css" : 1,
+                        "JS" : 0
+                    }
+                },
+                
+                {
+                    "Nombre":"Maryury Alexandra Caballero Montes",
+                    "email" : "m.alexandra1118@gmail.com",
+                    "linked" : "https://www.linkedin.com/in/maryuryalexandracaballeromontes?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                    "github" : "Maryu1118",
+                    "url" : "https://cvmaryurycaballero.netlify.app/",
+                    "inicio" : {
+                        "html" : 0,
+                        "css" : 0,
+                        "JS" : 0
+                    },
+                        "fin" : {
+                        "html" : 4,
+                        "css" : 4,
+                        "JS" : 4
+                    }
+                },
+                {
+
+                
+                    "Nombre":"Jimena Andrea Flores Garro",
+                    "email" : "jfgarro13@gmail.com",
+                    "linked" : "https://www.linkedin.com/in/jimena-andrea-flores-garro-76b78a1b2/",
+                    "github" : "Jimena2002-flow",
+                    "url" : "https://cv-jfgarro.netlify.app/",
+                    "inicio" :{
+                        "html" : 0,
+                        "css" : 0,
+                        "JS" : 0
+                    },
+                    "fin" : {
+                        "html" : 4,
+                        "css" : 4,
+                        "JS" : 4
+                    }
+                },
+                {
+                        "Nombre":"Josymar Pateti",
+                        "email" : "jsrph9@gmail.com",
+                        "linked" : "https://www.linkedin.com/in/josymar-pateti-12a2a1366/",
+                        "github" : "jsr707",
+                        "url" : "https://curriculumjoss.netlify.app/",
+                        "inicio" : {
+                            "html" : 4,
+                            "css" : 2,
+                            "JS" : 0
+                        },
+                        "fin" : {
+                            "html" : 4,
+                            "css" : 4,
+                            "JS" : 4
+                        }
+                },
+                {
+                        "Nombre":"jimmy ortega",
+                        "email" : "ortegajimmy275@gmail.com",
+                        "linked" : "https://www.linkedin.com/in/jimmy-ortega-b8870634b/",
+                        "github" : "Jim-909",
+                        "url" : "https://cv-jimmy.netlify.app",
+                        "inicio" : {
+                            "html" : 0,
+                            "css" : 0,
+                            "JS" : 0
+                        },
+                            "fin" : {
+                            "html" : 0,
+                            "css" : 0,
+                            "JS" : 0
+                        }                    
+                    
+                },
+                {
+                    "Nombre":"Rocio Gomez",
+                    "email" : "iveth5899@gmail.com",
+                    "linked" : "https://www.linkedin.com/",
+                    "github" : "rocio178",
+                    "url" : "https://curriculumchio.netlify.app/",
+                    "inicio" : {
+                    "html" : 0,
+                    "css" : 0,
+                    "JS" : 0
+                    },
+                    "fin" : {
+                    "html" : 4,
+                    "css" : 4,
+                    "JS" : 4
+                    }
+                },
+                {
+                        "Nombre":"Marcio Martins Barros",
+                        "email" : "marciomunguluni@gmail.com",
+                        "linked" : "",
+                        "github" : "Marciomunguluni",
+                        "url" : "https://cv-marcio.netlify.app/",
+                        "inicio" : {    
+                            "html" : 0,
+                            "css" : 0,
+                            "JS" : 0           
+                        },
+                        "fin" : {    
+                            "html" : 3,
+                            "css" : 3,
+                            "JS" : 2
+                        }
+                },
+                {
+                        "Nombre":"Cesar Hamilton Bravo Naranjo",
+                        "email" : "cesarhbn1@hotmail.com",
+                        "linked" : "https://www.linkedin.com/in/cesar-hamilton-bravo-naranjo",
+                        "github" : "cesarbravoz",
+                        "url" : "https://cesarbravoz.github.io/",
+                        "inicio" : {    
+                            "html" : 3,
+                            "css" : 3,
+                            "JS" : 3            
+                        },
+                        "fin" : {    
+                            "html" : 5,
+                            "css" : 5,
+                            "JS" : 5
+                        }
+                    },
+                    {
+                        "Nombre":"franco pizarro",
+                        "email" : "fp9325467@gmail.com",
+                        "linked" : "",
+                        "github" : "franco-pizarro",
+                        "url" : "https://cvcssfp.netlify.app/",
+                        "inicio" : {    
+                            "html" : 1,
+                            "css" : 1,
+                            "JS" : 1            
+                        },
+                        "fin" : {    
+                            "html" : 4,
+                            "css" : 4,
+                            "JS" : 4
+                        }   
+                    }
+                ]
+            };
+
+    function verificarAcceso() {
+      const clave = document.getElementById("password").value;
+        if (clave === "1301") {
+            document.getElementById("login").style.display = "none";
+            iniciarTodo();
+        } else {
+            alert("❌ Contraseña incorrecta. Intenta otra vez.");
+        }
+    }
+
+    function iniciarTodo() {
+      document.getElementById('titulo').textContent = cursoJSON.curso;
+
+      const curso = document.getElementById('curso');
+      curso.innerHTML = `
+        <ul class="bloqueCurso">
+          <li><strong>📅 Fecha Inicio:</strong> ${cursoJSON["fecha inicio"]}</li>
+          <li><strong>🏁 Fecha Fin:</strong> ${cursoJSON["fecha fin"]}</li>
+          <li><strong>📍 Lugar:</strong> ${cursoJSON["lugar"]}</li>
+          <li><strong>🏢 Empresa:</strong> ${cursoJSON["empresa"]}</li>
+          <li><a href="${cursoJSON["url_drive"]}" target="_blank">🔗 Material del curso</a></li>
+        </ul>`;
+
+      const tutor = cursoJSON.tutor;
+      document.getElementById("tutor").innerHTML = `
+        <h3>👨‍🏫 Tutor del curso</h3>
+        <ul class="bloqueCurso">
+          <li><strong>Nombre:</strong> ${tutor.Nombre}</li>
+          <li><strong>Email:</strong> ${tutor.email}</li>
+          <li><a href="${tutor.linked}" target="_blank">LinkedIn</a></li>
+          <li><a href="https://github.com/${tutor.github}" target="_blank">GitHub</a></li>
+        </ul>`;
+
+      pintarAlumnos();
+    }
+
+    function pintarAlumnos() {
+    const alumnosDiv = document.getElementById("alumnos");
+    alumnosDiv.innerHTML = "<h3>👩‍🎓 Alumnos:</h3>";
+
+        cursoJSON.alumnos.forEach((alumno, index) => {
+            const card = document.createElement("div");
+            card.className = "alumno-card";
+
+            const tabla = `
+            <table style="width:100%; margin-top:10px; border-collapse:collapse; color:#fff;">
+                <thead>
+                <tr style="background:#555;">
+                    <th>HCSS</th>
+                    <th>HTML</th>
+                    <th>CSS</th>
+                    <th>JS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>🔹 Inicial</td>
+                    <td>${alumno.inicio.html}</td>
+                    <td>${alumno.inicio.css}</td>
+                    <td>${alumno.inicio.JS}</td>
+                </tr>
+                <tr>
+                    <td>🔸 Final</td>
+                    <td>${alumno.fin.html}</td>
+                    <td>${alumno.fin.css}</td>
+                    <td>${alumno.fin.JS}</td>
+                </tr>
+                </tbody>
+            </table>
+            `;
+
+        card.innerHTML = `
+        <strong>${alumno.Nombre}</strong> (${alumno.email})
+        <div class="detalle" id="detalle-${index}">
+            <p><a href="${alumno.url}" target="_blank">🌐 CV</a></p>
+            <p><a href="${alumno.linked}" target="_blank">LinkedIn</a></p>
+            <p><a href="https://github.com/${alumno.github}" target="_blank">GitHub</a></p>
+            ${tabla}
+        </div>
+        `;
+
+        // Mostrar u ocultar detalle al hacer clic
+        card.onclick = () => {
+        const detalle = document.getElementById(`detalle-${index}`);
+        detalle.style.display = detalle.style.display === "none" ? "block" : "none";
+        };
+
+        alumnosDiv.appendChild(card);
+        });
+    }
+
+  </script>
+</body>
+</html>

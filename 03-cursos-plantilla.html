@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Render JSON dinámico</title>
+  <style>
+    img { max-width: 150px; }
+    .nivel { font-weight: bold; }
+    .badge { padding: 2px 5px; background: green; color: white; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div id="output"></div>
+
+  <script>
+    const data = {
+      "curso": "FRONTEND",
+      "fecha_inicio": "2022-01-24",
+      "foto_logo": "https://via.placeholder.com/150",
+      "tutor": {
+        "Nombre": "Alberto Mozo",
+        "email": "albertomozodocente@gmail.com",
+        "linked": "https://www.linkedin.com/in/alberto-mozo-avellaned-80615713/",
+        "github": "https://github.com/albertomozo",
+        "tel_contacto": "+34 612345678"
+      },
+      "alumnos": [
+        {
+          "Nombre": "Alumno1",
+          "email": "Alumno1@gmail.com",
+          "linked": "https://www.linkedin.com/",
+          "github": "https://github.com",
+          "avatar": "https://via.placeholder.com/100",
+          "inicio": {
+            "html": 1,
+            "css": 1,
+            "JS": 1,
+            "Vue": 3
+          },
+          "fin": {
+            "html": 4,
+            "css": 4,
+            "JS": 4,
+            "Vue": 4
+          }
+        }
+      ]
+    };
+
+    function renderData(data, container) {
+      for (const key in data) {
+        const value = data[key];
+
+        if (typeof value === 'object' && !Array.isArray(value)) {
+          const div = document.createElement('div');
+          div.innerHTML = `<strong>${key}</strong>:`;
+          container.appendChild(div);
+          renderData(value, div);
+        } else if (Array.isArray(value)) {
+          const list = document.createElement('div');
+          list.innerHTML = `<strong>${key}</strong>:`;
+          container.appendChild(list);
+          value.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.style.border = "1px solid #ccc";
+            itemDiv.style.margin = "5px";
+            itemDiv.style.padding = "5px";
+            renderData(item, itemDiv);
+            list.appendChild(itemDiv);
+          });
+        } else {
+          let el;
+
+          if (key.includes('linked') || key.includes('github') || key.startsWith('url_')) {
+            el = document.createElement('a');
+            el.href = value;
+            el.textContent = key;
+            el.target = "_blank";
+          } else if (key.includes('email')) {
+            el = document.createElement('a');
+            el.href = `mailto:${value}`;
+            el.textContent = value;
+          } else if (key.startsWith('tel_')) {
+            el = document.createElement('a');
+            el.href = `tel:${value.replace(/\s+/g, '')}`;
+            el.textContent = value;
+          } else if (key.startsWith('fecha')) {
+            el = document.createElement('time');
+            el.textContent = value;
+          } else if (key === 'curso') {
+            el = document.createElement('h2');
+            el.textContent = value;
+          } else if (key.toLowerCase().includes('nombre')) {
+            el = document.createElement('h3');
+            el.textContent = value;
+          } else if (key.startsWith('img_') || key.includes('foto') || key.includes('avatar')) {
+            el = document.createElement('img');
+            el.src = value;
+            el.alt = key;
+          } else if (typeof value === 'number') {
+            el = document.createElement('span');
+            el.className = 'nivel';
+            el.textContent = `${key}: ${value}`;
+          } else {
+            el = document.createElement('p');
+            el.textContent = `${key}: ${value}`;
+          }
+
+          container.appendChild(el);
+        }
+      }
+    }
+
+    const output = document.getElementById('output');
+    renderData(data, output);
+  </script>
+
+</body>
+</html>

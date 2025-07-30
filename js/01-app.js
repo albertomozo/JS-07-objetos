@@ -20,15 +20,15 @@ const disponible = true;
 
 /* const curso = {
     nombre  : 'FontEnd '// Nota como en lugar del signo igual se utilizan : , esta sintaxis es propia de los objetos y representa el valor que tendrá la propiedad o la llave del objeto, muchas veces se les dice llave valor
-} */
-
+}
+ */
 // si deseas agregar más propiedades puedes hacerlo de la siguiente forma
 
-/* const curso = {
+const curso = {
     nombre : 'FontEnd', // La , es importante, sin ella tendriamos un error
     horas : 210,
     disponible: true, // el último elemento puede o no tener la ,
-} */
-
+}
+course = document.getElementById('curso');
 console.log(curso);
 

@@ -1,0 +1,35 @@
+<script>
+
+let user = {
+  name: "John",  // En la clave "name" se almacena el valor "John"
+  age: 30 ,      // En la clave "age" se almacena el valor 30
+  profesion: "Programador", // En la clave "profesion" se almacena el valor "Programador"
+  isAdmin : false,
+  lenguajesProgramacion : ["JavaScript", "Python", "Java"], // En la clave "lenguajesProgramacion" se almacena un array con los lenguajes de programación
+    direccion: { // En la clave "direccion" se almacena un objeto con más información
+        ciudad: "Madrid",
+        pais: "España"
+    }
+};
+// recorrer un array
+const lenguajes = user.lenguajesProgramacion;
+for (let i = 0; i < lenguajes.length; i++) {
+    console.log(lenguajes[i]); // Imprime cada lenguaje de programación
+}
+console.log('--- for in ---')
+// recorrer un objeto
+for (let key in user) {
+    if (typeof(user[key]) === 'object') {
+        console.log(`${key}: es un objeto`); // Imprime la clave del objeto
+    } else {
+
+
+        console.log(`${key}: ${user[key]} typeof ${typeof(user[key]) }`); // Imprime cada clave y su valor en el objeto user
+    }
+
+}
+
+
+
+    
+</script>
